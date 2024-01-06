@@ -1,0 +1,131 @@
+home -->
+        1. Teremos o texto do banner.
+        1.1 Subtitulo do header
+        2. Texto dos cards
+
+Sobre -->
+    1. Header e o Subtitulo
+    2. adicionar mais projectos maximo 5
+    3. trocar imagem
+
+Logotipo de parceiros e clientes
+    1. adicionar logotipo maximo 20
+
+Servicos
+    1. Adicionar mais Servicos
+
+Nossos projectos
+
+    1. Trocar texto
+    2. Trocar os numeros de cada seccao e o nomes
+
+Testemunhos
+    1. Adicionar novos testemunhos e upload de fotos
+
+-----------Base de dados -----------
+
+CREATE TABLE admin (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(128) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO admin (username, password, email)
+VALUES ('rdoliz', SHA2('123456', 256), 'romoaldodoliz@gmail.com');
+
+CREATE TABLE home (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    admin_id INT NOT NULL,
+    title VARCHAR(50) NOT NULL,
+    description TEXT NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    FOREIGN KEY (admin_id) REFERENCES admin(id)
+);
+
+CREATE TABLE sobre (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    admin_id INT NOT NULL,
+    title VARCHAR(50) NOT NULL,
+    description TEXT NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    FOREIGN KEY (admin_id) REFERENCES admin(id)
+);
+
+CREATE TABLE clienteslogo (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    admin_id INT NOT NULL,
+    title VARCHAR(50) NOT NULL,
+    description TEXT NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    FOREIGN KEY (admin_id) REFERENCES admin(id)
+);
+
+CREATE TABLE servicos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    admin_id INT NOT NULL,
+    title VARCHAR(50) NOT NULL,
+    description TEXT NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    FOREIGN KEY (admin_id) REFERENCES admin(id)
+);
+
+CREATE TABLE nossosprojectos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    admin_id INT NOT NULL,
+    title VARCHAR(50) NOT NULL,
+    description TEXT NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    FOREIGN KEY (admin_id) REFERENCES admin(id)
+);
+
+CREATE TABLE testemunhos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    admin_id INT NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    description TEXT NOT NULL,
+    FOREIGN KEY (admin_id) REFERENCES admin(id)
+);
+
+CREATE TABLE blog (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    admin_id INT NOT NULL,
+    title VARCHAR(50) NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (admin_id) REFERENCES admin(id)
+);
+
+
+
+
+------- Inserindo dados ---------
+
+-- Assuming there is an admin with id = 1 in the admin table
+INSERT INTO home (admin_id, title, description, image)
+VALUES (1, 'Home Title', 'Home Description', 'path/to/home-image.jpg');
+
+-- Sobre table
+INSERT INTO sobre (admin_id, title, description, image)
+VALUES (1, 'Sobre Title', 'Sobre Description', 'path/to/sobre-image.jpg');
+
+-- Clienteslogo table
+INSERT INTO clienteslogo (admin_id, title, description, image)
+VALUES (1, 'Clienteslogo Title', 'Clienteslogo Description', 'path/to/clienteslogo-image.jpg');
+
+-- Servicos table
+INSERT INTO servicos (admin_id, title, description, image)
+VALUES (1, 'Servicos Title', 'Servicos Description', 'path/to/servicos-image.jpg');
+
+-- Nossosprojectos table
+INSERT INTO nossosprojectos (admin_id, title, description, image)
+VALUES (1, 'Nossosprojectos Title', 'Nossosprojectos Description', 'path/to/nossosprojectos-image.jpg');
+
+-- Testemunhos table
+INSERT INTO testemunhos (admin_id, name, description)
+VALUES (1, 'Testemunhos Name', 'Testemunhos Description');
+
+-- Blog table
+INSERT INTO blog (admin_id, title, content)
+VALUES (1, 'Blog Title', 'Blog Content');

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Admin - login</title>
+      <!-- Favicons -->
+  <link href="assets/img/icon.png" rel="icon">
+  <link href="assets/img/icon.png" rel="apple-touch-icon">
+        <!--  Fim dos Favicons -->
+    <link href="assets/login.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+</head>
+
+<body>
+    <div class="login">
+        <h1>Entrar</h1>
+        <form action="authenticate.php" method="post">
+            <label for="username">
+                <i class="fas fa-user"></i>
+            </label>
+            <input type="text" name="username" placeholder="Utilizador" id="username" required>
+            <label for="password">
+                <i class="fas fa-lock"></i>
+            </label>
+            <input type="password" name="password" placeholder="Senha" id="password" required>
+            <input type="submit" value="Entrar">
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var footer = document.createElement("footer");
+            footer.innerHTML = '<p>&copy; <span id="currentYear"></span> Romoaldo Doliz. Todos os direitos reservados. <a href="https://romoaldodoliz.github.io" target="_blank">Desenvolvido por: Romoaldo Doliz</a></p>';
+            document.body.appendChild(footer);
+
+            var currentYear = new Date().getFullYear();
+            document.getElementById("currentYear").innerText = currentYear;
+        });
+    </script>
+</body>
+
+</html>
