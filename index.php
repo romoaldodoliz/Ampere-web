@@ -1,15 +1,79 @@
 <?php
 include_once("./views/Header.php");
+require('config/connection.php');
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Função para exibir dados da tabela de banner
+function displayBannerData($conn) {
+    $query = "SELECT * FROM home";
+    $result = mysqli_query($conn, $query);
+
+    if (!$result) {
+        die("Query failed for landing: " . mysqli_error($conn));
+    }
+
+    // Retorna o resultado da consulta
+    return $result;
+}
+
+// Função para exibir dados da tabela de serviços
+function displayServicesData($conn) {
+    $query = "SELECT * FROM servicos";
+    $result = mysqli_query($conn, $query);
+
+    if (!$result) {
+        die("Query failed for servicos: " . mysqli_error($conn));
+    }
+
+    // Exibir dados na seção de serviços
+    // ...
+
+    mysqli_free_result($result);
+    return $result; // Adicionando retorno para a iteração
+}
+
+// ... (código das outras funções)
+
+// Chamar as funções para obter os resultados das consultas
+$servicosResult = displayBannerData($conn);
+
+mysqli_close($conn);
 ?>
 
 <!-- ======= Seccao do Banner======= -->
 <section id="hero" class="d-flex align-items-center justify-content-center">
     <div class="container" data-aos="fade-up">
 
+        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+            <div class="col-xl-6 col-lg-8" style="width:152.666667%;">
+                <?php
+                // Exibindo dados da tabela de banner
+                if ($servicosResult && mysqli_num_rows($servicosResult) > 0) {
+                    $row = mysqli_fetch_assoc($servicosResult);
+                ?>
+                    <h1><?php echo htmlspecialchars($row['title']); ?><span>.</span></h1>
+                    <h2>Economize energia, salve vidas</h2>
+                <?php
+                } else {
+                    echo "<p>Nenhum dado encontrado na tabela de banner.</p>";
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+ <!-- ======= Seccao do Banner======= -->
+ <section id="hero" class="d-flex align-items-center justify-content-center">
+    <div class="container" data-aos="fade-up">
+
       <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
         <div class="col-xl-6 col-lg-8">
-          <h1>Transforme a sua casa em um ambiente mais eficiente e <br>seguro com a ajuda da AES,SA<span>.</span></h1>
-          <h2>Economize energia, salve vidas</h2>
+
+
         </div>
       </div>
 
@@ -54,7 +118,14 @@ include_once("./views/Header.php");
             <img src="assets/img/banner.jpeg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
-            <h3 style="color:#1d937a">Somos especializados em oferecer soluções em energia solar, venda de materiais elétricos, instalação elétrica e automação elétrica para residências e empresas.</h3>
+            <h1>
+              SOBRE NÓS
+            </h1>
+            <br>
+   
+        <h3 style="color:#1d937a">Somos especializados em oferecer soluções em energia solar, 
+        venda de materiais elétricos, instalação elétrica e automação elétrica para residências e empresas.</h3>
+
             <p class="fst-italic">
             Estamos comprometidos em ajudá-lo a transformar a sua casa ou empresa em um ambiente mais eficiente, econômico e sustentável.
             </p>
