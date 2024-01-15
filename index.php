@@ -46,34 +46,10 @@ mysqli_close($conn);
 <section id="hero" class="d-flex align-items-center justify-content-center">
     <div class="container" data-aos="fade-up">
 
-        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
-            <div class="col-xl-6 col-lg-8" style="width:152.666667%;">
-                <?php
-                // Exibindo dados da tabela de banner
-                if ($servicosResult && mysqli_num_rows($servicosResult) > 0) {
-                    $row = mysqli_fetch_assoc($servicosResult);
-                ?>
-                    <h1><?php echo htmlspecialchars($row['title']); ?><span>.</span></h1>
-                    <h2>Economize energia, salve vidas</h2>
-                <?php
-                } else {
-                    echo "<p>Nenhum dado encontrado na tabela de banner.</p>";
-                }
-                ?>
-            </div>
-        </div>
-    </div>
-</section>
-
-
- <!-- ======= Seccao do Banner======= -->
- <section id="hero" class="d-flex align-items-center justify-content-center">
-    <div class="container" data-aos="fade-up">
-
       <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
         <div class="col-xl-6 col-lg-8">
-
-
+          <h1>Transforme a sua casa em um ambiente mais eficiente e <br>seguro com a ajuda da AES,SA<span>.</span></h1>
+          <h2>Economize energia, salve vidas</h2>
         </div>
       </div>
 
@@ -106,8 +82,7 @@ mysqli_close($conn);
 
     </div>
   </section><!-- Fim do Banner -->
-
-  <main id="main">
+<main id="main">
 
     <!-- ======= Seccao do Sobre Ampere - Romoaldo Doliz ======= -->
     <section id="about" class="about">
@@ -118,14 +93,7 @@ mysqli_close($conn);
             <img src="assets/img/banner.jpeg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
-            <h1>
-              SOBRE NÓS
-            </h1>
-            <br>
-   
-        <h3 style="color:#1d937a">Somos especializados em oferecer soluções em energia solar, 
-        venda de materiais elétricos, instalação elétrica e automação elétrica para residências e empresas.</h3>
-
+            <h3 style="color:#1d937a">Somos especializados em oferecer soluções em energia solar, venda de materiais elétricos, instalação elétrica e automação elétrica para residências e empresas.</h3>
             <p class="fst-italic">
             Estamos comprometidos em ajudá-lo a transformar a sua casa ou empresa em um ambiente mais eficiente, econômico e sustentável.
             </p>
@@ -398,19 +366,19 @@ mysqli_close($conn);
               <div class="address">
                 <i class="bi bi-geo-alt"></i>
                 <h4>Visita presencial:</h4>
-                <p><?php echo $localizacao ?></p>
+                <p>Rua da França, 19, 2 Andar,</p>
               </div>
 
               <div class="email">
                 <i class="bi bi-envelope"></i>
                 <h4>Email:</h4>
-                <p><?php echo $email ?></p>
+                <p>geral@amperees.co.mz</p>
               </div>
 
               <div class="phone">
                 <i class="bi bi-phone"></i>
                 <h4>Chamadas:</h4>
-                <p><?php echo $telefone ?></p>
+                <p>+258 84 2253479</p>
               </div>
 
             </div>
@@ -487,11 +455,11 @@ mysqli_close($conn);
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span><?php echo $nomepagina ?></span></strong>. 
+        &copy; Copyright <strong><span>Ampere - Empresa de Engenharia Eléctrica - Built to Build Solutions</span></strong>. 
         Todos Direitos Reservados
       </div>
       <div class="credits">
-       Desenvolvido por: <a href="https://romoaldodoliz.github.io/"><?php echo $autor ?></a>
+       Desenvolvido por: <a href="https://romoaldodoliz.github.io/">Romoaldo Doliz</a>
       </div>
     </div>
   </footer><!-- End Footer -->
